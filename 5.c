@@ -16,6 +16,9 @@ struct PC* fastestPC(struct PC data[], int n) {
             speed = computer.speed;
             ram = computer.RAM;
             b = &computer;
+        } else if (computer.speed == speed && computer.RAM > ram) {
+            ram = computer.RAM;
+            b = &computer;
         }
     }
     return b;
