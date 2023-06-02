@@ -8,16 +8,17 @@ struct PC {
 };
 
 struct PC* fastestPC(struct PC data[], int n) {
-    int speed, ram;
-    struct PC* b;
+    int sp = 0, r = 0;
+    struct PC *b;
     for (int i=0; i<n; i++)   {
         struct PC computer = data[i];
-        if (computer.speed > speed) {
-            speed = computer.speed;
-            ram = computer.RAM;
+        printf("%d %d\n", computer.speed, sp);
+        if (computer.speed > sp) {
+            sp = computer.speed;
+            r = computer.RAM;
             b = &computer;
-        } else if (computer.speed == speed && computer.RAM > ram) {
-            ram = computer.RAM;
+        } else if (computer.speed == sp && computer.RAM > r) {
+            r = computer.RAM;
             b = &computer;
         }
     }
@@ -25,5 +26,8 @@ struct PC* fastestPC(struct PC data[], int n) {
 }
 
 int main() {
+    struct PC data[3] = {{"1", 3, 4}, {"2", 3, 1}, {"3", 0, 1}};
+    struct PC a = *fastestPC(data, 3);
+    printf("%d %d\n", a.speed, a.RAM);
     return 0;
 }
